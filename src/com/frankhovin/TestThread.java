@@ -4,7 +4,7 @@ public class TestThread {
 
     public static void main(String args[]) {
         Snekker snekker = new Snekker( "Snekker Andersen");
-        //snekker.start();
+
         //RunnableDemo R2 = new RunnableDemo( "Thread-2");
         //R2.start();
 

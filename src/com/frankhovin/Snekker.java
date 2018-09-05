@@ -18,6 +18,7 @@ class Snekker implements Runnable {
 
         overview();
         basicwork();
+        possiblemissingmaterials();
 
         /*try {
             for(int i = 4; i > 0; i--) {
@@ -54,6 +55,22 @@ class Snekker implements Runnable {
         System.out.println(threadName + " gjør grunnarbeidet...");
         try {
             Thread.sleep((long) (5 + Math.random() * 10000));
+        } catch (InterruptedException e) {
+            System.out.println(threadName + " ble avbrutt under grunnarbeidet...");
+        }
+    }
+
+    private void possiblemissingmaterials() {
+        double d = Math.random();
+        System.out.println(d);
+        if (d <= 0.20)
+            getmaterials();
+    }
+
+    private void getmaterials() {
+        System.out.println(threadName + " må kjøre til grossisen for å hente materialer...");
+        try {
+            Thread.sleep((long) (15 + Math.random() * 10000));
         } catch (InterruptedException e) {
             System.out.println(threadName + " ble avbrutt under grunnarbeidet...");
         }
