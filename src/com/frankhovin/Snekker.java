@@ -17,19 +17,9 @@ class Snekker implements Runnable {
         System.out.println(threadName + " begynner arbeidet.");
 
         overview();
-        basicwork();
-        possiblemissingmaterials();
-
-        /*try {
-            for(int i = 4; i > 0; i--) {
-                System.out.println("Thread: " + threadName + ", " + i);
-                // Let the thread sleep for a while.
-                Thread.sleep(50);
-            }
-        } catch (InterruptedException e) {
-            System.out.println("Thread " +  threadName + " interrupted.");
-        }*/
-
+        basicWork();
+        possibleMissingMaterials();
+        continueWork();
 
         System.out.println("Thread " +  threadName + " exiting.");
     }
@@ -45,34 +35,42 @@ class Snekker implements Runnable {
     private void overview() {
         System.out.println(threadName + " tar et overblikk over situasjonen...");
         try {
-            Thread.sleep((long) (Math.random() * 10000));
+            Thread.sleep((long) (5 + Math.random() * 10000));
         } catch (InterruptedException e) {
             System.out.println(threadName + " ble avbrutt mens han tok et overblikk over situasjonen...");
         }
     }
 
-    private void basicwork() {
+    private void basicWork() {
         System.out.println(threadName + " gjør grunnarbeidet...");
         try {
-            Thread.sleep((long) (5 + Math.random() * 10000));
+            Thread.sleep((long) (10 + Math.random() * 10000));
         } catch (InterruptedException e) {
             System.out.println(threadName + " ble avbrutt under grunnarbeidet...");
         }
     }
 
-    private void possiblemissingmaterials() {
+    private void possibleMissingMaterials() {
         double d = Math.random();
-        System.out.println(d);
         if (d <= 0.20)
-            getmaterials();
+            getMaterials();
     }
 
-    private void getmaterials() {
+    private void getMaterials() {
         System.out.println(threadName + " må kjøre til grossisen for å hente materialer...");
         try {
-            Thread.sleep((long) (15 + Math.random() * 10000));
+            Thread.sleep((long) (20 + Math.random() * 10000));
         } catch (InterruptedException e) {
-            System.out.println(threadName + " ble avbrutt under grunnarbeidet...");
+            System.out.println(threadName + " ble avbrutt under henting av materialer...");
+        }
+    }
+
+    private void continueWork() {
+        System.out.println(threadName + " fortsetter arbeidet...");
+        try {
+            Thread.sleep((long) (20 + Math.random() * 10000));
+        } catch (InterruptedException e) {
+            System.out.println(threadName + " ble avbrutt under arbeidet...");
         }
     }
 }
